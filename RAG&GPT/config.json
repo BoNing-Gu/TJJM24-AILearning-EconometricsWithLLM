@@ -1,0 +1,10 @@
+{
+    "example": "2022",
+    "openai_api_key":"YOUR KEY",
+    "annual_reports_pdf_save_directory":"/hy-tmp/report",
+    "targets_df_path":"/hy-tmp/gpt/targets_2022.pickle",
+    "embeddings_directory":"/hy-tmp/embedding_2022",
+    "features_save_directory":"/hy-tmp/gpt/gptfeature_2022",
+    "final_df_save_path":"/hy-tmp/gpt/gptscore_2022.pickle",
+    "llm_system_prompt":"Give the answer in json format with only one key that is: 'score'"
+}

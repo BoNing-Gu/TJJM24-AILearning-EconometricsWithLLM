@@ -1,0 +1,47 @@
+1. 安装Microsoft Edge浏览器
+安装必要的依赖：
+    sudo apt-get install wget software-properties-common apt-transport-https -y
+导入Microsoft的GPG密钥：
+    wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+启用Edge浏览器的仓库：
+    sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main"
+更新包列表并安装Edge浏览器：
+    sudo apt-get update
+    sudo apt-get install microsoft-edge-stable -y
+
+2. 安装Edge Driver
+下载对应版本的Edge Driver：
+    EDGE_DRIVER_VERSION=$(microsoft-edge --version | cut -d' ' -f3)
+    wget https://msedgedriver.azureedge.net/$EDGE_DRIVER_VERSION/edgedriver_linux64.zip
+解压Edge Driver：
+    unzip edgedriver_linux64.zip -d /usr/local/bin/
+清理安装包：
+    rm edgedriver_linux64.zip
+
+3. 验证安装
+检查Edge浏览器版本：
+    microsoft-edge --version
+检查Edge Driver是否可执行：
+    msedgedriver --version
+
+4. 设置文件权限
+赋予执行权限：
+    sudo chmod +x /usr/local/bin/msedgedriver
+
+5. 配置PATH环境变量
+使用vi编辑.bashrc
+打开.bashrc文件：
+    vi ~/.bashrc
+进入插入模式（按下i键）。
+在文件的底部添加以下内容来配置环境变量：
+    export PATH=$PATH:/usr/local/bin
+退出插入模式（按Esc键）。
+保存更改并关闭编辑器（输入wq然后按Enter键）。
+使更改生效：
+    source ~/.bashrc
+检查PATH环境变量：
+    echo $PATH
+这将显示环境变量的值，检查是否包括/usr/local/bin。
+
+检查驱动器是否正常：
+    msedgedriver --version
